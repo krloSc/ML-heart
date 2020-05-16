@@ -9,5 +9,6 @@ train_set, test_set = data.split(0.2)
 train_labels=train_set["result"].copy()
 train_labels=test_set["result"].copy()
 train_prepared, test_prepared = data.prepare()
-#pruebA
+x,y=data.split(0.2)
+print(x.shape,y.shape)
 ###########################    Training    ####################################
