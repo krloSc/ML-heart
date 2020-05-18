@@ -1,5 +1,6 @@
 from util.data import *
 from training.train import*
+from sklearn.metrics import precision_score, recall_score, confusion_matrix
 
 ####################   preprocessing Data   ###################################
 
@@ -21,7 +22,11 @@ params=({'tipo':SVC(),'param':{'kernel': ["rbf"], 'coef0': [0, 1,10], 'gamma': [
     {'tipo':LinearSVC(),'param':{'C':[0.1,1,3,5],'max_iter':[10000]}},
     {'tipo':LinearSVC(),'param':{'max_iter':[100000],'C':[0.1,1,3,5]}})
 training.search_best(training,*params,heart=train_prepared,labels=train_labels)
-for item in training.best:
-        print(item)
+
 
 ##############################   Evaluating   ###################################
+
+for clf, title in zip(training.best_models,training.best_params):
+    clf.fit(train_prepared,train_labels)
+    print(str(title),"\t",recall_score(clf.predict(test_prepared),test_labels),"\t",
+        precision_score(clf.predict(test_prepared),test_labels))
