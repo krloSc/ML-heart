@@ -38,7 +38,7 @@ class Data():
 		if save==True:
 			image.save("Corr_Matrix")
 			print("Imagen guarda con exito")
-		plt.show()
+		plt.show(block=False)
 
 	def encoder(self,target="cp"):
 		cat_encoder = OneHotEncoder(sparse=False)

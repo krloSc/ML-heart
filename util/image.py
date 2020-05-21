@@ -18,15 +18,16 @@ def save(fig_id,fig_extension="png",resolution=300,directorio_root=".",tight_lay
 	while(os.path.isfile(path)):
 		n=n+1
 		path=os.path.join(imagenes_path, fig_id +str(n)+ "." + fig_extension)
-		
+
 	plt.savefig(path, format=fig_extension, dpi=resolution)
 
 def visual(models,titles,x_test,y_labels):
+
 	def make_meshgrid(x, y, h=.02):
 		"""Create a mesh of points to plot in
 
 		parameters
-		
+
 		x: data to base x-axis meshgrid on
 		y: data to base y-axis meshgrid on
 		h: stepsize for meshgrid, optional
